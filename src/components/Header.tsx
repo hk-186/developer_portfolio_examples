@@ -51,7 +51,7 @@ const Header = () => {
               scrollToSection('#home');
             }}
           >
-            {language === 'en' ? 'Alex Chen' : '陈亚历克斯'}
+            {language === 'en' ? 'Huang Kang' : '黄康'}
           </motion.a>
 
           <nav className="hidden md:flex items-center space-x-8">

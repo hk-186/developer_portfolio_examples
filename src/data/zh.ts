@@ -1,11 +1,11 @@
 import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink } from '../types';
 
 export const personalInfo: PersonalInfo = {
-  name: '陈亚历克斯',
+  name: '黄康',
   title: '全栈开发工程师',
-  bio: '我是一名充满热情的全栈开发者，拥有5年以上构建可扩展Web应用的经验。我专注于React、Node.js和云原生技术。当我不编码的时候，你可以发现我在徒步旅行或弹吉他。',
-  avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style&image_size=square',
-  location: '中国上海',
+  bio: '我是一名充满热情的全栈开发者，拥有多年构建可扩展Web应用的经验。我专注于React、Node.js和云原生技术。热爱编程，善于解决问题。',
+  avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style%20asian%20male&image_size=square',
+  location: '中国武汉',
   summary: '打造令人愉悦的数字体验'
 };
 
@@ -109,17 +109,17 @@ export const projects: Project[] = [
 ];
 
 export const contactInfo: ContactInfo = {
-  email: 'alex.chen@example.com',
-  github: 'https://github.com/alexchen',
-  linkedin: 'https://linkedin.com/in/alexchen',
-  twitter: 'https://twitter.com/alexchen_dev',
-  website: 'https://alexchen.dev'
+  email: 'hk186626169@163.com',
+  github: 'https://github.com/hk-186',
+  linkedin: 'https://linkedin.com/in/huangkang',
+  twitter: 'https://twitter.com/huangkang_dev',
+  website: 'https://huangkang.dev'
 };
 
 export const socialLinks: SocialLink[] = [
-  { name: 'GitHub', url: 'https://github.com/alexchen', icon: 'Github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/alexchen', icon: 'Linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/alexchen_dev', icon: 'Twitter' },
-  { name: '邮箱', url: 'mailto:alex.chen@example.com', icon: 'Mail' },
-  { name: '网站', url: 'https://alexchen.dev', icon: 'Globe' }
+  { name: 'GitHub', url: 'https://github.com/hk-186', icon: 'Github' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/huangkang', icon: 'Linkedin' },
+  { name: 'Twitter', url: 'https://twitter.com/huangkang_dev', icon: 'Twitter' },
+  { name: '邮箱', url: 'mailto:hk186626169@163.com', icon: 'Mail' },
+  { name: '网站', url: 'https://huangkang.dev', icon: 'Globe' }
 ];

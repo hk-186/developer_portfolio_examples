@@ -1,11 +1,11 @@
 import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink } from '../types';
 
 export const personalInfo: PersonalInfo = {
-  name: 'Alex Chen',
+  name: 'Huang Kang',
   title: 'Full Stack Developer',
-  bio: 'I\'m a passionate full-stack developer with 5+ years of experience building scalable web applications. I specialize in React, Node.js, and cloud-native technologies. When I\'m not coding, you can find me hiking or playing guitar.',
-  avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style&image_size=square',
-  location: 'Shanghai, China',
+  bio: 'I\'m a passionate full-stack developer with years of experience building scalable web applications. I specialize in React, Node.js, and cloud-native technologies. I love coding and solving problems.',
+  avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style%20asian%20male&image_size=square',
+  location: 'Wuhan, China',
   summary: 'Building digital experiences that delight users'
 };
 
@@ -109,17 +109,17 @@ export const projects: Project[] = [
 ];
 
 export const contactInfo: ContactInfo = {
-  email: 'alex.chen@example.com',
-  github: 'https://github.com/alexchen',
-  linkedin: 'https://linkedin.com/in/alexchen',
-  twitter: 'https://twitter.com/alexchen_dev',
-  website: 'https://alexchen.dev'
+  email: 'hk186626169@163.com',
+  github: 'https://github.com/hk-186',
+  linkedin: 'https://linkedin.com/in/huangkang',
+  twitter: 'https://twitter.com/huangkang_dev',
+  website: 'https://huangkang.dev'
 };
 
 export const socialLinks: SocialLink[] = [
-  { name: 'GitHub', url: 'https://github.com/alexchen', icon: 'Github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/alexchen', icon: 'Linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/alexchen_dev', icon: 'Twitter' },
-  { name: 'Email', url: 'mailto:alex.chen@example.com', icon: 'Mail' },
-  { name: 'Website', url: 'https://alexchen.dev', icon: 'Globe' }
+  { name: 'GitHub', url: 'https://github.com/hk-186', icon: 'Github' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/huangkang', icon: 'Linkedin' },
+  { name: 'Twitter', url: 'https://twitter.com/huangkang_dev', icon: 'Twitter' },
+  { name: 'Email', url: 'mailto:hk186626169@163.com', icon: 'Mail' },
+  { name: 'Website', url: 'https://huangkang.dev', icon: 'Globe' }
 ];
