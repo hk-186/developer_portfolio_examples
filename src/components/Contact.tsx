@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Github, Linkedin, Twitter, Mail, Globe, Copy, Check } from 'lucide-react';
-import { ContactInfo, SocialLink } from '../types';
+import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, Copy, Check } from 'lucide-react';
+import type { ContactInfo, SocialLink } from '../types';
 
 interface ContactProps {
   contactInfo: ContactInfo;
@@ -15,9 +14,9 @@ const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const iconMap: Record<string, React.ReactNode> = {
-    Github: <Github size={24} />,
-    Linkedin: <Linkedin size={24} />,
-    Twitter: <Twitter size={24} />,
+    Github: <GitBranch size={24} />,
+    Linkedin: <ExternalLink size={24} />,
+    Twitter: <MessageCircle size={24} />,
     Mail: <Mail size={24} />,
     Globe: <Globe size={24} />
   };

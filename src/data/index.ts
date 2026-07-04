@@ -1,4 +1,4 @@
-import { PersonalInfo, Skill, Project, ContactInfo, SocialLink, NavItem } from '../types';
+import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink, NavItem } from '../types';
 
 export const personalInfo: PersonalInfo = {
   name: 'Alex Chen',

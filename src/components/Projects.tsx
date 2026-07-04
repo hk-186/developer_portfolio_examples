@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
-import { Project } from '../types';
+import { GitBranch, ExternalLink } from 'lucide-react';
+import type { Project } from '../types';
 
 interface ProjectsProps {
   projects: Project[];
@@ -107,7 +107,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                       whileTap={{ scale: 0.95 }}
                       aria-label="GitHub"
                     >
-                      <Github size={16} />
+                      <GitBranch size={16} />
                       <span className="text-sm">GitHub</span>
                     </motion.a>
                   )}

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Globe, ChevronDown } from 'lucide-react';
-import { PersonalInfo, SocialLink } from '../types';
+import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, ChevronDown } from 'lucide-react';
+import type { PersonalInfo, SocialLink } from '../types';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
@@ -16,9 +16,9 @@ const Hero = ({ personalInfo, socialLinks }: HeroProps) => {
   };
 
   const iconMap: Record<string, React.ReactNode> = {
-    Github: <Github size={20} />,
-    Linkedin: <Linkedin size={20} />,
-    Twitter: <Twitter size={20} />,
+    Github: <GitBranch size={20} />,
+    Linkedin: <ExternalLink size={20} />,
+    Twitter: <MessageCircle size={20} />,
     Mail: <Mail size={20} />,
     Globe: <Globe size={20} />
   };

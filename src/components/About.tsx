@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { MapPin, React, TypeScript, Vue, Node, Python, Database, Container, Cloud, GitBranch, Package, Zap } from 'lucide-react';
-import { PersonalInfo, Skill } from '../types';
+import { MapPin, Code2, Type, Layout, Server, Terminal, Database, Container, Cloud, GitBranch, Package, Zap } from 'lucide-react';
+import type { PersonalInfo, Skill } from '../types';
 
 interface AboutProps {
   personalInfo: PersonalInfo;
@@ -15,11 +14,11 @@ const About = ({ personalInfo, skills }: AboutProps) => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const iconMap: Record<string, React.ReactNode> = {
-    React: <React size={20} />,
-    TypeScript: <TypeScript size={20} />,
-    Vue: <Vue size={20} />,
-    Node: <Node size={20} />,
-    Python: <Python size={20} />,
+    React: <Code2 size={20} />,
+    TypeScript: <Type size={20} />,
+    Vue: <Layout size={20} />,
+    Node: <Server size={20} />,
+    Python: <Terminal size={20} />,
     Database: <Database size={20} />,
     Container: <Container size={20} />,
     Cloud: <Cloud size={20} />,

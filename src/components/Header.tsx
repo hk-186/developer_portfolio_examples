@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { NavItem } from '../types';
+import type { NavItem } from '../types';
 
 interface HeaderProps {
   navItems: NavItem[];
