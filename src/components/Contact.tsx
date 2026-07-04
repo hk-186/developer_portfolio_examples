@@ -5,6 +5,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { contactInfo as enContactInfo, socialLinks as enSocialLinks } from '../data/en';
 import { contactInfo as zhContactInfo, socialLinks as zhSocialLinks } from '../data/zh';
+import Tooltip from './Tooltip';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -91,18 +92,19 @@ const Contact = () => {
             className="flex flex-wrap items-center justify-center gap-6"
           >
             {socialLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary hover:shadow-glow transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -4 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={link.name}
-              >
-                {iconMap[link.icon]}
-              </motion.a>
+              <Tooltip key={link.name} content={link.name}>
+                <motion.a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary hover:shadow-glow transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={link.name}
+                >
+                  {iconMap[link.icon]}
+                </motion.a>
+              </Tooltip>
             ))}
           </motion.div>
 
