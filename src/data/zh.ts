@@ -1,7 +1,7 @@
 import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink } from '../types';
 
 export const personalInfo: PersonalInfo = {
-  name: '黄康',
+  name: 'Kevin',
   title: '全栈开发工程师',
   bio: '我是一名充满热情的全栈开发者，拥有多年构建可扩展Web应用的经验。我专注于React、Node.js和云原生技术。热爱编程，善于解决问题。',
   avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style%20asian%20male&image_size=square',

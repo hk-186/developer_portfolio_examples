@@ -1,7 +1,7 @@
 import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink } from '../types';
 
 export const personalInfo: PersonalInfo = {
-  name: 'Huang Kang',
+  name: 'Kevin',
   title: 'Full Stack Developer',
   bio: 'I\'m a passionate full-stack developer with years of experience building scalable web applications. I specialize in React, Node.js, and cloud-native technologies. I love coding and solving problems.',
   avatar: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20software%20developer%20portrait%20headshot%20dark%20background%20modern%20style%20asian%20male&image_size=square',

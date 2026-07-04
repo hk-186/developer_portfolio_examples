@@ -20,7 +20,7 @@ const Footer = ({ year = new Date().getFullYear() }: FooterProps) => {
         >
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-4" />
           <p className="text-text-muted text-sm">
-            © {year} {language === 'en' ? 'Huang Kang' : '黄康'}. {t.footer.copyright}
+            © {year} Kevin. {t.footer.copyright}
           </p>
         </motion.div>
       </div>
