@@ -4,6 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { personalInfo as enPersonalInfo, socialLinks as enSocialLinks } from '../data/en';
 import { personalInfo as zhPersonalInfo, socialLinks as zhSocialLinks } from '../data/zh';
+import Tooltip from './Tooltip';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -85,18 +86,19 @@ const Hero = () => {
           className="flex items-center justify-center space-x-4"
         >
           {socialLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary hover:shadow-glow transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={link.name}
-            >
-              {iconMap[link.icon]}
-            </motion.a>
+            <Tooltip key={link.name} content={link.name}>
+              <motion.a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary hover:shadow-glow transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={link.name}
+              >
+                {iconMap[link.icon]}
+              </motion.a>
+            </Tooltip>
           ))}
         </motion.div>
       </div>
