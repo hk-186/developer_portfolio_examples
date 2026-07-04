@@ -1,17 +1,19 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Code2, Type, Layout, Server, Terminal, Database, Container, Cloud, GitBranch, Package, Zap } from 'lucide-react';
-import type { PersonalInfo, Skill } from '../types';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
+import { personalInfo as enPersonalInfo, skills as enSkills } from '../data/en';
+import { personalInfo as zhPersonalInfo, skills as zhSkills } from '../data/zh';
 
-interface AboutProps {
-  personalInfo: PersonalInfo;
-  skills: Skill[];
-}
-
-const About = ({ personalInfo, skills }: AboutProps) => {
+const About = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { language } = useLanguage();
+  const t = translations[language];
+  const personalInfo = language === 'en' ? enPersonalInfo : zhPersonalInfo;
+  const skills = language === 'en' ? enSkills : zhSkills;
 
   const iconMap: Record<string, React.ReactNode> = {
     React: <Code2 size={20} />,
@@ -28,12 +30,12 @@ const About = ({ personalInfo, skills }: AboutProps) => {
   };
 
   const categories = [
-    { id: 'all', label: 'All' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'database', label: 'Database' },
-    { id: 'devops', label: 'DevOps' },
-    { id: 'tools', label: 'Tools' }
+    { id: 'all', label: t.about.categories.all },
+    { id: 'frontend', label: t.about.categories.frontend },
+    { id: 'backend', label: t.about.categories.backend },
+    { id: 'database', label: t.about.categories.database },
+    { id: 'devops', label: t.about.categories.devops },
+    { id: 'tools', label: t.about.categories.tools }
   ];
 
   const filteredSkills = activeCategory === 'all' 
@@ -51,7 +53,7 @@ const About = ({ personalInfo, skills }: AboutProps) => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              About Me
+              {t.about.title}
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto" />
@@ -79,7 +81,7 @@ const About = ({ personalInfo, skills }: AboutProps) => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-2xl font-semibold text-center mb-8">Skills</h3>
+          <h3 className="text-2xl font-semibold text-center mb-8">{t.about.skills}</h3>
 
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((category) => (

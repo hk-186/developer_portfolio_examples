@@ -1,4 +1,4 @@
-import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink, NavItem } from '../types';
+import type { PersonalInfo, Skill, Project, ContactInfo, SocialLink } from '../types';
 
 export const personalInfo: PersonalInfo = {
   name: 'Alex Chen',
@@ -122,11 +122,4 @@ export const socialLinks: SocialLink[] = [
   { name: 'Twitter', url: 'https://twitter.com/alexchen_dev', icon: 'Twitter' },
   { name: 'Email', url: 'mailto:alex.chen@example.com', icon: 'Mail' },
   { name: 'Website', url: 'https://alexchen.dev', icon: 'Globe' }
-];
-
-export const navItems: NavItem[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' }
 ];

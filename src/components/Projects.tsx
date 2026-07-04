@@ -1,15 +1,17 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { GitBranch, ExternalLink } from 'lucide-react';
-import type { Project } from '../types';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
+import { projects as enProjects } from '../data/en';
+import { projects as zhProjects } from '../data/zh';
 
-interface ProjectsProps {
-  projects: Project[];
-}
-
-const Projects = ({ projects }: ProjectsProps) => {
+const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { language } = useLanguage();
+  const t = translations[language];
+  const projects = language === 'en' ? enProjects : zhProjects;
 
   const getStatusColor = (status?: string) => {
     switch (status) {
@@ -27,11 +29,11 @@ const Projects = ({ projects }: ProjectsProps) => {
   const getStatusLabel = (status?: string) => {
     switch (status) {
       case 'completed':
-        return 'Completed';
+        return t.projects.status.completed;
       case 'in-progress':
-        return 'In Progress';
+        return t.projects.status['in-progress'];
       case 'paused':
-        return 'Paused';
+        return t.projects.status.paused;
       default:
         return 'Unknown';
     }
@@ -48,7 +50,7 @@ const Projects = ({ projects }: ProjectsProps) => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Projects
+              {t.projects.title}
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto" />
@@ -105,10 +107,10 @@ const Projects = ({ projects }: ProjectsProps) => {
                       className="flex items-center space-x-1 px-3 py-2 bg-background rounded-lg text-text-secondary hover:text-primary hover:bg-primary/10 transition-colors duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      aria-label="GitHub"
+                      aria-label={t.projects.github}
                     >
                       <GitBranch size={16} />
-                      <span className="text-sm">GitHub</span>
+                      <span className="text-sm">{t.projects.github}</span>
                     </motion.a>
                   )}
                   {project.demoUrl && (
@@ -119,10 +121,10 @@ const Projects = ({ projects }: ProjectsProps) => {
                       className="flex items-center space-x-1 px-3 py-2 bg-primary rounded-lg text-white hover:bg-secondary transition-colors duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      aria-label="Demo"
+                      aria-label={t.projects.demo}
                     >
                       <ExternalLink size={16} />
-                      <span className="text-sm">Demo</span>
+                      <span className="text-sm">{t.projects.demo}</span>
                     </motion.a>
                   )}
                 </div>

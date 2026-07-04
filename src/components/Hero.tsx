@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion';
 import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, ChevronDown } from 'lucide-react';
-import type { PersonalInfo, SocialLink } from '../types';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
+import { personalInfo as enPersonalInfo, socialLinks as enSocialLinks } from '../data/en';
+import { personalInfo as zhPersonalInfo, socialLinks as zhSocialLinks } from '../data/zh';
 
-interface HeroProps {
-  personalInfo: PersonalInfo;
-  socialLinks: SocialLink[];
-}
+const Hero = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const personalInfo = language === 'en' ? enPersonalInfo : zhPersonalInfo;
+  const socialLinks = language === 'en' ? enSocialLinks : zhSocialLinks;
 
-const Hero = ({ personalInfo, socialLinks }: HeroProps) => {
   const scrollToAbout = () => {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
@@ -72,7 +75,7 @@ const Hero = ({ personalInfo, socialLinks }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-text-muted mb-8 max-w-2xl mx-auto"
         >
-          {personalInfo.summary}
+          {t.hero.summary}
         </motion.p>
 
         <motion.div

@@ -4,20 +4,22 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { personalInfo, skills, projects, contactInfo, socialLinks, navItems } from './data';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header navItems={navItems} />
-      <main>
-        <Hero personalInfo={personalInfo} socialLinks={socialLinks} />
-        <About personalInfo={personalInfo} skills={skills} />
-        <Projects projects={projects} />
-        <Contact contactInfo={contactInfo} socialLinks={socialLinks} />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

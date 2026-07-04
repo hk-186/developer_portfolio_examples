@@ -1,17 +1,19 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, Copy, Check } from 'lucide-react';
-import type { ContactInfo, SocialLink } from '../types';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
+import { contactInfo as enContactInfo, socialLinks as enSocialLinks } from '../data/en';
+import { contactInfo as zhContactInfo, socialLinks as zhSocialLinks } from '../data/zh';
 
-interface ContactProps {
-  contactInfo: ContactInfo;
-  socialLinks: SocialLink[];
-}
-
-const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
+const Contact = () => {
   const [copied, setCopied] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { language } = useLanguage();
+  const t = translations[language];
+  const contactInfo = language === 'en' ? enContactInfo : zhContactInfo;
+  const socialLinks = language === 'en' ? enSocialLinks : zhSocialLinks;
 
   const iconMap: Record<string, React.ReactNode> = {
     Github: <GitBranch size={24} />,
@@ -42,7 +44,7 @@ const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Contact
+              {t.contact.title}
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto" />
@@ -55,7 +57,7 @@ const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
           className="max-w-2xl mx-auto"
         >
           <div className="bg-card border border-border rounded-xl p-8 mb-8">
-            <h3 className="text-xl font-semibold mb-6">Get In Touch</h3>
+            <h3 className="text-xl font-semibold mb-6">{t.contact.getInTouch}</h3>
             
             <motion.button
               onClick={copyEmail}
@@ -73,7 +75,7 @@ const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
                     className="flex items-center space-x-1 text-green-500"
                   >
                     <Check size={20} />
-                    <span className="text-sm">Copied!</span>
+                    <span className="text-sm">{t.contact.copied}</span>
                   </motion.span>
                 ) : (
                   <Copy size={20} className="text-text-muted" />
@@ -110,7 +112,7 @@ const Contact = ({ contactInfo, socialLinks }: ContactProps) => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-center text-text-muted mt-8 text-lg"
           >
-            Let's build something amazing together!
+            {t.contact.cta}
           </motion.p>
         </motion.div>
       </div>

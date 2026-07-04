@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import type { NavItem } from '../types';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
-interface HeaderProps {
-  navItems: NavItem[];
-}
+const navRoutes = ['home', 'about', 'projects', 'contact'];
 
-const Header = ({ navItems }: HeaderProps) => {
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,32 +51,45 @@ const Header = ({ navItems }: HeaderProps) => {
               scrollToSection('#home');
             }}
           >
-            Alex Chen
+            {language === 'en' ? 'Alex Chen' : '陈亚历克斯'}
           </motion.a>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navRoutes.map((route) => (
               <motion.a
-                key={item.href}
-                href={item.href}
+                key={route}
+                href={`#${route}`}
                 className="text-text-secondary hover:text-foreground transition-colors duration-200"
                 whileHover={{ y: -2 }}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.href);
+                  scrollToSection(`#${route}`);
                 }}
               >
-                {item.label}
+                {t.nav[route as keyof typeof t.nav]}
               </motion.a>
             ))}
           </nav>
 
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center space-x-4">
+            <motion.button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-card border border-border text-text-secondary hover:text-primary hover:border-primary transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={language === 'en' ? 'Switch to Chinese' : '切换到英文'}
+            >
+              <Globe size={18} />
+              <span className="text-sm font-medium">{language === 'en' ? '中文' : 'EN'}</span>
+            </motion.button>
+
+            <button
+              className="md:hidden text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -87,17 +101,17 @@ const Header = ({ navItems }: HeaderProps) => {
           className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
         >
           <nav className="px-4 py-4 space-y-4">
-            {navItems.map((item) => (
+            {navRoutes.map((route) => (
               <a
-                key={item.href}
-                href={item.href}
+                key={route}
+                href={`#${route}`}
                 className="block text-text-secondary hover:text-foreground transition-colors duration-200 py-2"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.href);
+                  scrollToSection(`#${route}`);
                 }}
               >
-                {item.label}
+                {t.nav[route as keyof typeof t.nav]}
               </a>
             ))}
           </nav>
