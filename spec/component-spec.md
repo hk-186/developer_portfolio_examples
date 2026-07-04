@@ -1,0 +1,250 @@
+# 组件规格文档
+
+## Header 组件
+
+### 接口定义
+```typescript
+interface HeaderProps {
+  navItems: {
+    label: string;
+    href: string;
+  }[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| navItems | Array | 是 | 导航菜单项数组 |
+
+### 功能要求
+- 固定在页面顶部
+- 滚动时背景模糊效果
+- 移动端响应式菜单（汉堡按钮）
+- 平滑滚动到对应区域
+
+---
+
+## Hero 组件
+
+### 接口定义
+```typescript
+interface HeroProps {
+  name: string;
+  title: string;
+  summary: string;
+  avatar: string;
+  socialLinks: {
+    name: string;
+    url: string;
+    icon: string;
+  }[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| name | string | 是 | 姓名 |
+| title | string | 是 | 职位/头衔 |
+| summary | string | 是 | 一句话介绍 |
+| avatar | string | 否 | 头像URL |
+| socialLinks | Array | 否 | 社交链接数组 |
+
+### 功能要求
+- 大标题展示
+- 渐变色文字效果
+- 头像展示（圆形）
+- 社交图标链接
+- 向下滚动提示动画
+
+---
+
+## About 组件
+
+### 接口定义
+```typescript
+interface AboutProps {
+  bio: string;
+  location: string;
+  skills: {
+    id: string;
+    name: string;
+    category: string;
+    level: number;
+    icon?: string;
+  }[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| bio | string | 是 | 个人简介 |
+| location | string | 否 | 所在地 |
+| skills | Array | 是 | 技能列表 |
+
+### 功能要求
+- 详细介绍文本
+- 技能分类展示
+- 技能熟练度进度条
+- 技能图标展示
+
+---
+
+## Projects 组件
+
+### 接口定义
+```typescript
+interface ProjectsProps {
+  projects: {
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    githubUrl?: string;
+    demoUrl?: string;
+    tags?: string[];
+    status?: string;
+  }[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| projects | Array | 是 | 项目列表 |
+
+### 功能要求
+- 项目卡片网格布局
+- 项目截图懒加载
+- 悬停动画效果
+- 技术栈标签展示
+- GitHub/Demo 链接按钮
+
+---
+
+## Contact 组件
+
+### 接口定义
+```typescript
+interface ContactProps {
+  email: string;
+  github: string;
+  socialLinks: {
+    name: string;
+    url: string;
+    icon: string;
+  }[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| email | string | 是 | 邮箱地址 |
+| github | string | 是 | GitHub链接 |
+| socialLinks | Array | 否 | 社交链接数组 |
+
+### 功能要求
+- 联系方式展示
+- 邮箱链接可点击
+- 社交图标链接
+- 复制邮箱功能
+
+---
+
+## Footer 组件
+
+### 接口定义
+```typescript
+interface FooterProps {
+  year?: number;
+  copyright?: string;
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| year | number | 否 | 年份（默认当前年份） |
+| copyright | string | 否 | 版权信息 |
+
+### 功能要求
+- 版权信息展示
+- 简单装饰线条
+
+---
+
+## ProjectCard 组件（子组件）
+
+### 接口定义
+```typescript
+interface ProjectCardProps {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  githubUrl?: string;
+  demoUrl?: string;
+  tags?: string[];
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| id | string | 是 | 项目ID |
+| name | string | 是 | 项目名称 |
+| description | string | 是 | 项目描述 |
+| image | string | 是 | 项目截图 |
+| technologies | Array | 是 | 技术栈列表 |
+| githubUrl | string | 否 | GitHub链接 |
+| demoUrl | string | 否 | 演示链接 |
+| tags | Array | 否 | 标签列表 |
+
+---
+
+## SkillCard 组件（子组件）
+
+### 接口定义
+```typescript
+interface SkillCardProps {
+  id: string;
+  name: string;
+  category: string;
+  level: number;
+  icon?: string;
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| id | string | 是 | 技能ID |
+| name | string | 是 | 技能名称 |
+| category | string | 是 | 技能分类 |
+| level | number | 是 | 熟练度(0-100) |
+| icon | string | 否 | 图标名称 |
+
+---
+
+## SocialIcon 组件（子组件）
+
+### 接口定义
+```typescript
+interface SocialIconProps {
+  name: string;
+  url: string;
+  icon: string;
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| name | string | 是 | 平台名称 |
+| url | string | 是 | 链接地址 |
+| icon | string | 是 | Lucide图标名称 |
