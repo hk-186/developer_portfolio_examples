@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Copy, Check } from 'lucide-react';
+import { Mail, Copy, Check, FileText, BookOpen } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { contactInfo as enContactInfo, socialLinks as enSocialLinks } from '../data/en';
@@ -58,6 +58,7 @@ const Contact = () => {
               className="w-full flex items-center justify-center space-x-3 p-4 bg-primary/10 border border-primary rounded-xl hover:bg-primary/20 transition-colors duration-300"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              aria-label="Copy email address"
             >
               <Mail className="text-primary" size={24} />
               <span className="text-lg font-medium">{contactInfo.email}</span>
@@ -76,6 +77,37 @@ const Contact = () => {
                 )}
               </div>
             </motion.button>
+
+            <div className="flex flex-wrap gap-4 mt-6">
+              {contactInfo.resume && (
+                <motion.a
+                  href={contactInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[140px] flex items-center justify-center space-x-2 p-3 bg-card border border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="Download resume"
+                >
+                  <FileText size={18} />
+                  <span className="text-sm font-medium">{language === 'en' ? 'Resume' : '简历'}</span>
+                </motion.a>
+              )}
+              {contactInfo.blog && (
+                <motion.a
+                  href={contactInfo.blog}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[140px] flex items-center justify-center space-x-2 p-3 bg-card border border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="Visit blog"
+                >
+                  <BookOpen size={18} />
+                  <span className="text-sm font-medium">{language === 'en' ? 'Blog' : '博客'}</span>
+                </motion.a>
+              )}
+            </div>
           </div>
 
           <motion.div

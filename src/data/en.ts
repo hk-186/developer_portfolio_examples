@@ -113,7 +113,9 @@ export const contactInfo: ContactInfo = {
   github: 'https://github.com/hk-186',
   linkedin: 'https://linkedin.com/in/huangkang',
   twitter: 'https://twitter.com/huangkang_dev',
-  website: 'https://huangkang.dev'
+  website: 'https://huangkang.dev',
+  blog: 'https://blog.huangkang.dev',
+  resume: 'https://drive.google.com/file/d/123/view'
 };
 
 export const socialLinks: SocialLink[] = [

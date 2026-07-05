@@ -31,6 +31,8 @@ export interface ContactInfo {
   linkedin?: string;
   twitter?: string;
   website?: string;
+  blog?: string;
+  resume?: string;
 }
 
 export interface PersonalInfo {

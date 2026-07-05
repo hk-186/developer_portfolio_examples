@@ -290,3 +290,103 @@ interface ThemeContextType {
 - Github, Linkedin, Twitter, Mail, Globe
 - React, TypeScript, Vue, Node, Python
 - Database, Container, Cloud, GitBranch, Package, Zap
+
+---
+
+## BackToTop 组件
+
+### 接口定义
+```typescript
+interface BackToTopProps {}
+```
+
+### 功能要求
+- 滚动超过阈值后显示
+- 点击平滑滚动到顶部
+- 浮动定位（右下角）
+- 渐入渐出动画
+
+---
+
+## ProjectModal 组件
+
+### 接口定义
+```typescript
+interface ProjectModalProps {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| project | Project | 是 | 项目数据 |
+| isOpen | boolean | 是 | 是否打开 |
+| onClose | function | 是 | 关闭回调 |
+
+### 功能要求
+- 项目详情展示
+- 项目图片、名称、状态
+- 技术栈标签、项目标签
+- GitHub/Demo 链接
+- 动画过渡效果
+- ESC键关闭
+
+---
+
+## Helmet 组件
+
+### 接口定义
+```typescript
+interface HelmetProps {}
+```
+
+### 功能要求
+- 页面标题
+- 页面描述
+- SEO meta标签（OG、Twitter）
+- 语言切换支持
+- 图标设置
+
+---
+
+## ErrorBoundary 组件
+
+### 接口定义
+```typescript
+interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+```
+
+### 属性说明
+| 属性 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| children | ReactNode | 是 | 子组件 |
+
+### 功能要求
+- 捕获子组件错误
+- 优雅错误展示
+- 重试按钮
+- 错误日志记录
+
+---
+
+## useScroll Hook
+
+### 文件路径
+`src/hooks/useScroll.ts`
+
+### 导出内容
+| 导出名称 | 返回类型 | 说明 |
+|----------|----------|------|
+| useScroll | { isScrolled, scrollY } | 滚动状态检测 |
+| useScrollTo | (selector, behavior) => void | 平滑滚动到指定元素 |
+| useScrollProgress | number | 滚动进度百分比 |
+| useCurrentSection | string | 当前可见区域 |
+
+### 参数说明
+- useScroll(threshold): threshold 为触发阈值，默认50px
+- useScrollTo(selector, behavior): selector 为CSS选择器，behavior 为滚动行为

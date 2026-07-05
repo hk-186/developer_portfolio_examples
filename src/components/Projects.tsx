@@ -1,10 +1,12 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { GitBranch, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { projects as enProjects } from '../data/en';
 import { projects as zhProjects } from '../data/zh';
+import ProjectModal from './ProjectModal';
+import type { Project } from '../types';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -12,6 +14,8 @@ const Projects = () => {
   const { language } = useLanguage();
   const t = translations[language];
   const projects = language === 'en' ? enProjects : zhProjects;
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getStatusColor = (status?: string) => {
     switch (status) {
@@ -39,6 +43,17 @@ const Projects = () => {
     }
   };
 
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = '';
+  };
+
   return (
     <section id="projects" ref={ref} className="py-24 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,13 +79,18 @@ const Projects = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
-              className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary hover:shadow-glow transition-all duration-300"
+              onClick={() => openModal(project)}
+              className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary hover:shadow-glow transition-all duration-300 cursor-pointer group"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && openModal(project)}
+              aria-label={`View ${project.name} project details`}
             >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
@@ -104,6 +124,9 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       className="flex items-center space-x-1 px-3 py-2 bg-background rounded-lg text-text-secondary hover:text-primary hover:bg-primary/10 transition-colors duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -118,6 +141,9 @@ const Projects = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       className="flex items-center space-x-1 px-3 py-2 bg-primary rounded-lg text-white hover:bg-secondary transition-colors duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -133,6 +159,16 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <ProjectModal
+            project={selectedProject}
+            isOpen={isModalOpen}
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

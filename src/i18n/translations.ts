@@ -39,6 +39,11 @@ export const translations = {
     },
     footer: {
       copyright: 'All rights reserved.'
+    },
+    seo: {
+      title: 'Kevin - Full Stack Developer | Portfolio',
+      description: 'Professional full-stack developer specializing in React, Node.js, and cloud-native technologies. Check out my projects and skills.',
+      keywords: 'developer, full-stack, react, nodejs, javascript, typescript, portfolio'
     }
   },
   zh: {
@@ -81,6 +86,11 @@ export const translations = {
     },
     footer: {
       copyright: '保留所有权利。'
+    },
+    seo: {
+      title: 'Kevin - 全栈开发者 | 作品集',
+      description: '专业全栈开发者，擅长 React、Node.js 和云原生技术。查看我的项目和技能。',
+      keywords: '开发者, 全栈, react, nodejs, javascript, typescript, 作品集'
     }
   }
 };
