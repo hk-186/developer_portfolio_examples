@@ -22,6 +22,8 @@ interface HeaderProps {
 - 滚动时背景模糊效果
 - 移动端响应式菜单（汉堡按钮）
 - 平滑滚动到对应区域
+- 主题切换按钮（深色/亮色模式）
+- 语言切换按钮（中文/英文）
 
 ---
 
@@ -248,3 +250,43 @@ interface SocialIconProps {
 | name | string | 是 | 平台名称 |
 | url | string | 是 | 链接地址 |
 | icon | string | 是 | Lucide图标名称 |
+
+---
+
+## ThemeContext（主题管理）
+
+### 接口定义
+```typescript
+type Theme = 'dark' | 'light';
+
+interface ThemeContextType {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+}
+```
+
+### 功能要求
+- 支持深色/亮色主题切换
+- 主题状态持久化到 localStorage
+- 通过 CSS 变量实现主题配色切换
+- 提供 useTheme hook 供组件使用
+
+---
+
+## icons 工具（图标映射）
+
+### 文件路径
+`src/utils/icons.tsx`
+
+### 导出内容
+| 导出名称 | 类型 | 说明 |
+|----------|------|------|
+| iconMap | Record<string, ReactNode> | 标准尺寸图标映射（20px） |
+| iconMapLarge | Record<string, ReactNode> | 大尺寸图标映射（24px） |
+| iconMapSmall | Record<string, ReactNode> | 小尺寸图标映射（16px） |
+
+### 支持图标
+- Github, Linkedin, Twitter, Mail, Globe
+- React, TypeScript, Vue, Node, Python
+- Database, Container, Cloud, GitBranch, Package, Zap

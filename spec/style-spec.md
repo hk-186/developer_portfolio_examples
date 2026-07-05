@@ -9,26 +9,33 @@
 | --color-secondary | #8b5cf6 | 次色调（紫色） |
 | --color-accent | #ec4899 | 强调色（粉色） |
 
-### 背景色
+### 深色主题背景色
 | 变量名 | 值 | 用途 |
 |--------|-----|------|
-| --color-bg-primary | #0a0a0a | 主背景 |
-| --color-bg-secondary | #111111 | 次背景 |
-| --color-bg-card | #1a1a1a | 卡片背景 |
-| --color-bg-hover | #242424 | 悬停背景 |
-
-### 文字色
-| 变量名 | 值 | 用途 |
-|--------|-----|------|
-| --color-text-primary | #ffffff | 主文字 |
-| --color-text-secondary | #9ca3af | 次文字 |
-| --color-text-muted | #6b7280 | 辅助文字 |
-
-### 边框色
-| 变量名 | 值 | 用途 |
-|--------|-----|------|
+| --color-background | #0a0a0a | 主背景 |
+| --color-card | #1a1a1a | 卡片背景 |
 | --color-border | #27272a | 边框 |
-| --color-border-light | #3f3f46 | 浅色边框 |
+
+### 浅色主题背景色
+| 变量名 | 值 | 用途 |
+|--------|-----|------|
+| --color-background | #ffffff | 主背景 |
+| --color-card | #f8fafc | 卡片背景 |
+| --color-border | #e2e8f0 | 边框 |
+
+### 深色主题文字色
+| 变量名 | 值 | 用途 |
+|--------|-----|------|
+| --color-foreground | #ffffff | 主文字 |
+| --color-text-secondary | #94a3b8 | 次文字 |
+| --color-text-muted | #64748b | 辅助文字 |
+
+### 浅色主题文字色
+| 变量名 | 值 | 用途 |
+|--------|-----|------|
+| --color-foreground | #0a0a0a | 主文字 |
+| --color-text-secondary | #475569 | 次文字 |
+| --color-text-muted | #94a3b8 | 辅助文字 |
 
 ### 渐变色
 | 名称 | 值 | 用途 |
