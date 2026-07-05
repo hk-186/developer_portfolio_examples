@@ -5,21 +5,24 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { LanguageProvider } from './i18n/LanguageContext';
+import { ThemeProvider } from './i18n/ThemeContext';
 
 function App() {
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-background text-foreground">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <div className="min-h-screen bg-background text-foreground">
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

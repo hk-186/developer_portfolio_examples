@@ -8,13 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
-        foreground: '#ffffff',
-        card: '#1a1a1a',
-        border: '#27272a',
+        background: {
+          DEFAULT: 'rgb(var(--color-background))',
+          foreground: 'rgb(var(--color-foreground))',
+        },
+        card: 'rgb(var(--color-card))',
+        border: 'rgb(var(--color-border))',
         primary: '#6366f1',
         secondary: '#8b5cf6',
         accent: '#ec4899',
+        'text-secondary': 'rgb(var(--color-text-secondary))',
+        'text-muted': 'rgb(var(--color-text-muted))',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

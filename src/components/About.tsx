@@ -1,10 +1,11 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, Code2, Type, Layout, Server, Terminal, Database, Container, Cloud, GitBranch, Package, Zap } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { personalInfo as enPersonalInfo, skills as enSkills } from '../data/en';
 import { personalInfo as zhPersonalInfo, skills as zhSkills } from '../data/zh';
+import { iconMap } from '../utils/icons.tsx';
 
 const About = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -14,20 +15,6 @@ const About = () => {
   const t = translations[language];
   const personalInfo = language === 'en' ? enPersonalInfo : zhPersonalInfo;
   const skills = language === 'en' ? enSkills : zhSkills;
-
-  const iconMap: Record<string, React.ReactNode> = {
-    React: <Code2 size={20} />,
-    TypeScript: <Type size={20} />,
-    Vue: <Layout size={20} />,
-    Node: <Server size={20} />,
-    Python: <Terminal size={20} />,
-    Database: <Database size={20} />,
-    Container: <Container size={20} />,
-    Cloud: <Cloud size={20} />,
-    GitBranch: <GitBranch size={20} />,
-    Package: <Package size={20} />,
-    Zap: <Zap size={20} />
-  };
 
   const categories = [
     { id: 'all', label: t.about.categories.all },

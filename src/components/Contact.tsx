@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, Copy, Check } from 'lucide-react';
+import { Mail, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { contactInfo as enContactInfo, socialLinks as enSocialLinks } from '../data/en';
 import { contactInfo as zhContactInfo, socialLinks as zhSocialLinks } from '../data/zh';
 import Tooltip from './Tooltip';
+import { iconMapLarge } from '../utils/icons.tsx';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -15,14 +16,6 @@ const Contact = () => {
   const t = translations[language];
   const contactInfo = language === 'en' ? enContactInfo : zhContactInfo;
   const socialLinks = language === 'en' ? enSocialLinks : zhSocialLinks;
-
-  const iconMap: Record<string, React.ReactNode> = {
-    Github: <GitBranch size={24} />,
-    Linkedin: <ExternalLink size={24} />,
-    Twitter: <MessageCircle size={24} />,
-    Mail: <Mail size={24} />,
-    Globe: <Globe size={24} />
-  };
 
   const copyEmail = async () => {
     try {
@@ -102,7 +95,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                   aria-label={link.name}
                 >
-                  {iconMap[link.icon]}
+                  {iconMapLarge[link.icon]}
                 </motion.a>
               </Tooltip>
             ))}

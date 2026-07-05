@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { GitBranch, ExternalLink, MessageCircle, Mail, Globe, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
 import { personalInfo as enPersonalInfo, socialLinks as enSocialLinks } from '../data/en';
 import { personalInfo as zhPersonalInfo, socialLinks as zhSocialLinks } from '../data/zh';
 import Tooltip from './Tooltip';
+import { iconMap } from '../utils/icons.tsx';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -17,14 +18,6 @@ const Hero = () => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const iconMap: Record<string, React.ReactNode> = {
-    Github: <GitBranch size={20} />,
-    Linkedin: <ExternalLink size={20} />,
-    Twitter: <MessageCircle size={20} />,
-    Mail: <Mail size={20} />,
-    Globe: <Globe size={20} />
   };
 
   return (
